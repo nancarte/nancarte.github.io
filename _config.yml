@@ -1,19 +1,19 @@
 title:              Nathaniel Carter
-email:              your-email@example.com
-description:        A Blog Theme by Start Bootstrap
-author:             Start Bootstrap
+email:              carternathanielr@gmail.com
+description:        Data Analysis Portfolio
+author:             Nathaniel Carter
 baseurl:            ""
 url:                "https://nancarte.github.io"
 
 # Social Profiles
-twitter_username:   SBootstrap
-github_username:    StartBootstrap
-facebook_username:  StartBootstrap
+twitter_username:
+github_username:    nancarte
+facebook_username:  
 instagram_username:  
-linkedin_username:
+linkedin_username:https://www.linkedin.com/in/carternr
 
 # Add your google-analytics ID here to activate google analytics
-google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+google_analytics:
 
 # Build settings
 markdown:           kramdown
