@@ -1,40 +1,48 @@
 ---
 layout: post
-title: "Man must explore, and this is exploration at its greatest"
-subtitle: "Problems look mighty small from 150 miles up"
-date: 2020-01-31 10:45:13 -0400
-background: '/img/posts/06.jpg'
+title:  "Tennis Project"
+date:   2022-10-21
+author: Nano Carter
+description: This is my project about the top 250 ATP players
+image: /assets/images/download.jpg
 ---
 
-<p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+# Top 250 ATP Players
+### For this project I found data for the top 250 ATP tennis players which was moderately difficult but even more difficult was figuring out what data I wanted.
+### Introduction
+I have played tennis for a long time and I am interested in the ATP which is why I chose to obtain this data. At first I wanted to obtain more interesting data but it seemed to be challenging to obtain. For example I could have obtained information about the best servers in tennis from a table and added new columns to it. I think I was worried I wouldn't be able to easily get this data which is why I gave up on this data. It also was simply hard to choose what data to obtain when so many choices were available but no choice was the obvious choice. I chose data about the top 250 ATP players because I knew there would be information such as country where a player is from in a different data source.
 
-<p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
+### Obtaining Final Data Set
+To obtain the final data set I got information from two sources. I scraped the ATP Tour website and a website called tennisexplorer. Most of the data came from the ATP Tour website while one column came from the tennisexplorer website. I faced some challenges getting this data set. One of the challenges was that many websites didn't have enough players in their rankings. Another challenge was that some had a load more button which I don't know how to deal with. One different challenge was that some websites didn't have the country of players from Russia becuase they aren't allowed to represent Russia currently.
 
-<p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
+### Details of Obtaining Data Set
+I used BeautifulSoup to obtain my dataset. I don't have much experience with APIs which is why I decided to use BeautifulSoup and used code that should be familiar.
+```
+import pandas as pd
+import numpy as np
+from bs4 import BeautifulSoup
+import requests
+import re
+r = requests.get(url)
+r.status_code
+soup = BeautifulSoup(r.content, 'html.parser')
+```
+I used list comprehensions to get my data as well as soup.find_all where I found specific classes such as the code below.
+```
+rank = soup.find_all(class_='rank-cell border-left-4 border-right-dash-1')
+rank1 = [i.string for i in rank]
+```
+After getting the data from the ATP Tour website I got data from tennisexplorer which was on multiple urls and my code probably is very inefficent but I stil got the data I wanted. There were many more things I did to clean the data into the data I wanted but to keep this post short I won't go into details. My data ended up looking like this.
 
-<p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
+![Figure](https://raw.githubusercontent.com/152151/stat386-projects/main/assets/images/Table.png)
 
-<p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.</p>
 
-<h2 class="section-heading">The Final Frontier</h2>
+### Ethics
+I believe it was legal to scrape based on the discussion we had in class which told me that it was most likely legal because of a Supreme Court ruling. One website kicked me off their website for web scraping and I didn't obtain data from that website which is a potential way to know if it's ethical/legal. I went to the robots.txt for the ATP Tour website and it is kind of debatable whether they want people to be webscraping what I webscraped but I think because it is public and easily found data it is ethical and legal. The robots.txt on the tennisxplorer website seems to allow webscraping the data which I did.
 
-<p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+### Conclusion
+I am going to try and extract as much interesting information as I can from this dataset. I will try and find unexpected results so that my exploratory data analyis has good insights. This might only be interesting to those that play or watch tennis but I will do my best with the data set I obtained.
 
-<p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+### Link to GitHub repo
 
-<blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
-
-<p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
-
-<h2 class="section-heading">Reaching for the Stars</h2>
-
-<p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
-
-<img class="img-fluid" src="https://source.unsplash.com/Mn9Fa_wQH-M/800x450" alt="Demo Image">
-<span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-
-<p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-
-<p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-
-<p>Placeholder text by <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by <a href="https://unsplash.com/">Unsplash</a>.</p>
+https://github.com/152151/Tennis_Project
